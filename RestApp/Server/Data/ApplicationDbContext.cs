@@ -1,12 +1,10 @@
-﻿using IdentityServer4.EntityFramework.Options;
+﻿using RestApp.Server.Configurations.Entities;
+using RestApp.Server.Models;
+using RestApp.Shared.Domain;
+using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using RestApp.Server.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestApp.Server.Data
 {
@@ -16,6 +14,16 @@ namespace RestApp.Server.Data
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
+        }
+
+        public DbSet<Table> Tables { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfiguration(new TableSeedConfiguration());
+ 
         }
     }
 }
