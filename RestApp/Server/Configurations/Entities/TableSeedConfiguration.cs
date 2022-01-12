@@ -16,9 +16,7 @@ namespace RestApp.Server.Configurations.Entities
                 {
 
                     Id = 1,
-                    Name = "Black",
-                    Location ="",
-                    TType ="1 person",
+                    TType ="1 person table",
                     Pax =1,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -28,10 +26,28 @@ namespace RestApp.Server.Configurations.Entities
                 new Table
                 {
                     Id = 2,
-                    Name = "Black",
-                    Location = "",
-                    TType = "1 person",
-                    Pax = 1,
+                    TType = "2 person table",
+                    Pax = 2,
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System"
+                },
+                new Table
+                {
+                    Id = 3,
+                    TType = "3 person table",
+                    Pax = 3,
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System"
+                },
+                new Table
+                {
+                    Id = 4,
+                    TType = "4 person table",
+                    Pax = 4,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
