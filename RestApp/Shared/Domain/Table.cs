@@ -11,6 +11,5 @@ namespace RestApp.Shared.Domain
     {
         public string TType { get; set; }
         public int Pax { get; set; }
-        public int Quantity { get; set; }
     }
 }

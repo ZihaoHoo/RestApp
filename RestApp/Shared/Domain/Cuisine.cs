@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestApp.Shared.Domain
 {
-    public class Cuisine
+    public class Cuisine : BaseDomainModel
     {
         public string Name { get; set; }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RestApp.Server.IRepository
 {
-    public class IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
         Task<IList<T>> GetAll(
             Expression<Func<T, bool>> expression = null,

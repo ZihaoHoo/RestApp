@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace RestApp.Server.IRepository
 {
-    public class IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
-        IGenericRepository<Restaurant> Restaurants { get; }
+        Task Save(HttpContext httpContext);
+        IGenericRepository<Cuisine> Cuisines { get; }
         IGenericRepository<Food> Foods { get; }
-        IGenericRepository<Table> Tables { get; }
-        IGenericRepository<AvailablePayment> AvailablePayments { get; }
+        IGenericRepository<Image> Images { get; }
+        IGenericRepository<Restaurant> Restaurants { get; }
         IGenericRepository<Booking> Bookings { get; }
         IGenericRepository<Customer> Customers { get; }
+        IGenericRepository<Table> Tables { get; }
+        IGenericRepository<PaymentType> PaymentTypes { get; }
     }
 }

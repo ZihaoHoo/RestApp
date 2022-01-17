@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestApp.Shared.Domain
 {
-    public class AvailablePayment : BaseDomainModel
+    public class PaymentType : BaseDomainModel
     {
         public string Name { get; set; }
     }

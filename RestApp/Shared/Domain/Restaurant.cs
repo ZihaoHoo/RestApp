@@ -13,7 +13,7 @@ namespace RestApp.Shared.Domain
         public string Address { get; set; }
         public DateTime OpeningTime { get; set; }
         public DateTime ClosingTime { get; set; }
-        public virtual List<AvailablePayment> PaymentOption { get; set; }
+        public virtual List<PaymentType> PaymentOption { get; set; }
         public string Cuisine { get; set; }
         public float AvgPayment { get; set; }
         public string Table_setting { get; set; }
