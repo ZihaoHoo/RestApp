@@ -8,7 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RestApp.Server.Data;
+using RestApp.Server.IRepository;
 using RestApp.Server.Models;
+using RestApp.Server.Repository;
 using System.Linq;
 
 namespace RestApp.Server
@@ -43,6 +45,7 @@ namespace RestApp.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

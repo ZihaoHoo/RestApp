@@ -25,5 +25,13 @@ namespace RestApp.Server.Data
             builder.ApplyConfiguration(new TableSeedConfiguration());
  
         }
+
+        public DbSet<RestApp.Shared.Domain.Cuisine> Cuisine { get; set; }
+
+        public DbSet<RestApp.Shared.Domain.Booking> Booking { get; set; }
+
+        public DbSet<RestApp.Shared.Domain.Customer> Customer { get; set; }
+
+        public DbSet<RestApp.Shared.Domain.Food> Food { get; set; }
     }
 }
