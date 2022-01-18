@@ -1,0 +1,25 @@
+﻿@page "/tables/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+
+<h3 class="card-title">Tables</h3>
+
+@code {
+    private List<Table> Tables;
+    protected async override Task OnInitializedAsync()
+    {
+        Tables = await _client.GetFromJsonAsync<List<Table>>($"{Endpoints.TablesEndpoint}");
+    }
+    async Task Delete(int makeId)
+    {
+        var table = Tables.First(q => q.Id == tableId);
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {table.Name}?");
+        if (confirm)
+        {
+            await _client.DeleteAsync($"{Endpoints.TablesEndpoint}/{tableId}");
+            await OnInitializedAsync();
+        }
+    }
+}
