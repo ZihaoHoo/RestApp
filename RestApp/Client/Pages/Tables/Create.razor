@@ -1,0 +1,25 @@
+﻿@page "/tables/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3 class="card-title">Create New Table</h3>
+<hr />
+<br />
+<FormComponent ButtonText="Create" OnValidSubmit="CreateTable" table="table" />
+
+@code {
+    Table table = new Table();
+
+    private IList<Table> Tables;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Tables = await _client.GetFromJsonAsync<List<Table>>($"{Endpoints.TablesEndpoint}");
+    }
+
+    private async Task CreateTable()
+    {
+        await _client.PostAsJsonAsync(Endpoints.TablesEndpoint, table);
+        _navManager.NavigateTo("/tables/");
+    }
+}

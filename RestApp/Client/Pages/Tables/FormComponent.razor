@@ -1,0 +1,26 @@
+﻿<EditForm Model="@table" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <fieldset disabled="@Disabled">
+        <div class="form-group">
+            <label>Table: </label>
+            <div>
+                <InputText @bind-Value="table.TType" class="form-control" />
+                <ValidationMessage For="@(()=> table.TType)" />
+            </div>
+        </div>
+    </fieldset>
+    @if (!Disabled)
+    {
+        <button type="submit" class=" btn btn-success btn-block">
+            @ButtonText
+        </button>
+    }
+    <BackToList Target="tables" />
+</EditForm>
+@code {
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public Table table { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}

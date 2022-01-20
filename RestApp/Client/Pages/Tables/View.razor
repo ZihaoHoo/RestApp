@@ -1,0 +1,13 @@
+﻿@page "/tables/view/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+<h3>View</h3>
+<FormComponent table="table" Disabled="true" />
+@code {
+    [Parameter] public int id { get; set; }
+    Table table = new Table ();
+    protected async override Task OnParametersSetAsync()
+    {
+        table= await _client.GetFromJsonAsync<Table>($"{Endpoints.TablesEndpoint}/{id}");
+    }
+}
