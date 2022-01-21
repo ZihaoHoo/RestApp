@@ -1,0 +1,67 @@
+﻿@page "/paymentTypes/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+
+
+<h3 class="card-title">Tables</h3>
+<br />
+<a href="/paymentTypes/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Payment Types
+</a>
+<br />
+<br />
+
+@if (PaymentTypes == null)
+{
+<div class="alert alert-info">Loading PaymentTypes ...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Payment Types</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var paymentType in PaymentTypes)
+            {
+                <tr>
+                    <td>@paymentType.Type</td>
+                    <td>
+                        <a href="/paymentTypes/view/@paymentType.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/paymentTypes/edit/@paymentType.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(paymentType.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<PaymentType> PaymentTypes;
+    protected async override Task OnInitializedAsync()
+    {
+        PaymentTypes = await _client.GetFromJsonAsync<List<PaymentType>>($"{Endpoints.PaymentTypesEndpoint}");
+    }
+    async Task Delete(int PaymentTypeId)
+    {
+        var paymentType = PaymentTypes.First(q => q.Id == PaymentTypeId);
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {paymentType.Type}?");
+        if (confirm)
+        {
+            await _client.DeleteAsync($"{Endpoints.PaymentTypesEndpoint}/{PaymentTypeId}");
+            await OnInitializedAsync();
+        }
+    }
+}

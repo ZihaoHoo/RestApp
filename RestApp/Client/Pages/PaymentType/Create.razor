@@ -1,0 +1,25 @@
+﻿@page "/paymentTypes/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3 class="card-title">Create New Payment Type</h3>
+<hr />
+<br />
+<FormComponent ButtonText="Create" OnValidSubmit="CreatePaymentType" paymentType="paymentType" />
+
+@code {
+    PaymentType paymentType = new PaymentType();
+
+    private IList<PaymentType> PaymentTypes;
+
+    protected async override Task OnInitializedAsync()
+    {
+        PaymentTypes = await _client.GetFromJsonAsync<List<PaymentType>>($"{Endpoints.PaymentTypesEndpoint}");
+    }
+
+    private async Task CreatePaymentType()
+    {
+        await _client.PostAsJsonAsync(Endpoints.PaymentTypesEndpoint, paymentType);
+        _navManager.NavigateTo("/paymentTypes/");
+    }
+}
