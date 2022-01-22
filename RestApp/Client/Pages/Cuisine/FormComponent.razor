@@ -1,12 +1,12 @@
-﻿<EditForm Model="@paymentType" OnValidSubmit="@OnValidSubmit">
+﻿<EditForm Model="@cuisine" OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <fieldset disabled="@Disabled">
         <div class="form-group">
-            <label>Payment Type: </label>
+            <label>Cuisine: </label>
             <div>
-                <InputText @bind-Value="paymentType.Type" class="form-control" />
-                <ValidationMessage For="@(()=> paymentType.Type)" />
+                <InputText @bind-Value="cuisine.Name" class="form-control" />
+                <ValidationMessage For="@(()=> cuisine.Name)" />
             </div>
         </div>
     </fieldset>
@@ -16,11 +16,11 @@
             @ButtonText
         </button>
     }
-    <BackToList Target="paymentTypes" />
+    <BackToList Target="cuisines" />
 </EditForm>
 @code {
     [Parameter] public bool Disabled { get; set; } = false;
-    [Parameter] public PaymentType paymentType { get; set; }
+    [Parameter] public Cuisine cuisine { get; set; }
     [Parameter] public string ButtonText { get; set; } = "Save";
     [Parameter] public EventCallback OnValidSubmit { get; set; }
 }
