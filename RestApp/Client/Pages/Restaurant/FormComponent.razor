@@ -1,0 +1,74 @@
+﻿@inject HttpClient _client
+
+<EditForm Model="@restaurant" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <fieldset disabled="@Disabled">
+        <div class="form-group">
+            <label>Restaurant: </label>
+            <div>
+                <InputText @bind-Value="restaurant.Name" class="form-control" />
+                <ValidationMessage For="@(()=> restaurant.Name)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Make: </label>
+            <div>
+                <InputSelect @bind-Value="restaurant.CuisineId" class="form-control">
+                    <option value="">-- Select Cuisine --</option>
+                    @if (Cuisines != null)
+                    {
+                        foreach (var cuisine in Cuisines)
+                        {
+                            <option value="@cuisine.Id">@cuisine.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(()=> restaurant.CuisineId)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number: </label>
+            <div>
+                <InputNumber @bind-Value="restaurant.PhoneNumber" class="form-control" />
+                <ValidationMessage For="@(()=> restaurant.PhoneNumber)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Address: </label>
+            <div>
+                <InputText @bind-Value="restaurant.Address" class="form-control" />
+                <ValidationMessage For="@(()=> restaurant.Address)" />
+            </div>
+        </div>
+
+
+    </fieldset>
+    @if (!Disabled)
+    {
+        <button type="submit" class=" btn btn-success btn-block">
+            @ButtonText
+        </button>
+    }
+    <BackToList Target="tables" />
+</EditForm>
+@code {
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public Restaurant restaurant { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+    private IList<Table> Tables;
+    private IList<Cuisine> Cuisines;
+    private IList<PaymentType> PaymentTypes;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Tables = await _client.GetFromJsonAsync<List<Table>>($"{Endpoints.TablesEndpoint}");
+        Cuisines = await _client.GetFromJsonAsync<List<Cuisine>>($"{Endpoints.CuisinesEndpoint}");
+        PaymentTypes = await _client.GetFromJsonAsync<List<PaymentType>>($"{Endpoints.PaymentTypesEndpoint}");
+    }
+}

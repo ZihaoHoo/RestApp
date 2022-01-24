@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Restaurant\**" />
-    <Content Remove="Pages\Restaurant\**" />
-    <EmbeddedResource Remove="Pages\Restaurant\**" />
-    <None Remove="Pages\Restaurant\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.12" PrivateAssets="all" />
@@ -28,6 +21,13 @@
 
   <ItemGroup>
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Booking\" />
+    <Folder Include="Pages\Customer\" />
+    <Folder Include="Pages\Food\" />
+    <Folder Include="Pages\Image\" />
   </ItemGroup>
 
 </Project>

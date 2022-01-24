@@ -26,7 +26,7 @@ namespace RestApp.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetRestaurant()
         {
-            var restaurants = await _unitOfWork.Restaurants.GetAll();
+            var restaurants = await _unitOfWork.Restaurants.GetAll(includes: q => q.Include(x => x.Cuisine).Include(x => x.ClosingTime).Include(x => x.PaymentOption));
             return Ok(restaurants);
         }
 
@@ -47,14 +47,14 @@ namespace RestApp.Server.Controllers
         // PUT: api/Restaurants/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRestaurant(int id, Restaurant restaurant)
+        public async Task<IActionResult> PutRestaurant(int id, Restaurant Restaurant)
         {
-            if (id != restaurant.Id)
+            if (id != Restaurant.Id)
             {
                 return BadRequest();
             }
 
-            _unitOfWork.Restaurants.Update(restaurant);
+            _unitOfWork.Restaurants.Update(Restaurant);
 
             try
             {
@@ -78,12 +78,12 @@ namespace RestApp.Server.Controllers
         // POST: api/Restaurants
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Restaurant>> PostRestaurant(Restaurant restaurant)
+        public async Task<ActionResult<Restaurant>> PostRestaurant(Restaurant Restaurant)
         {
-            await _unitOfWork.Restaurants.Insert(restaurant);
+            await _unitOfWork.Restaurants.Insert(Restaurant);
             await _unitOfWork.Save(HttpContext);
 
-            return CreatedAtAction("GetRestaurant", new { id = restaurant.Id }, restaurant);
+            return CreatedAtAction("GetRestaurant", new { id = Restaurant.Id }, Restaurant);
         }
 
         // DELETE: api/Restaurants/5
