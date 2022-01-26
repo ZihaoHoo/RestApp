@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RestApp.Server.Migrations
 {
-    public partial class AddApplicationTables : Migration
+    public partial class new_db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,6 +26,8 @@ namespace RestApp.Server.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -44,6 +46,23 @@ namespace RestApp.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cuisines",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cuisines", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -87,7 +106,7 @@ namespace RestApp.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Image",
+                name: "Images",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -101,7 +120,24 @@ namespace RestApp.Server.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Image", x => x.Id);
+                    table.PrimaryKey("PK_Images", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PaymentTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -125,21 +161,13 @@ namespace RestApp.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Restaurant",
+                name: "Tables",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OpeningTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ClosingTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Cuisine = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AvgPayment = table.Column<float>(type: "real", nullable: false),
-                    Table_setting = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Menu = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Reviews = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Pax = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -147,7 +175,7 @@ namespace RestApp.Server.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Restaurant", x => x.Id);
+                    table.PrimaryKey("PK_Tables", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -257,37 +285,25 @@ namespace RestApp.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ImageRestaurant",
-                columns: table => new
-                {
-                    ImagesId = table.Column<int>(type: "int", nullable: false),
-                    RestaurantsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ImageRestaurant", x => new { x.ImagesId, x.RestaurantsId });
-                    table.ForeignKey(
-                        name: "FK_ImageRestaurant_Image_ImagesId",
-                        column: x => x.ImagesId,
-                        principalTable: "Image",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ImageRestaurant_Restaurant_RestaurantsId",
-                        column: x => x.RestaurantsId,
-                        principalTable: "Restaurant",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PaymentTypes",
+                name: "Restaurants",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RestaurantId = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OpeningTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ClosingTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaymentId = table.Column<int>(type: "int", nullable: false),
+                    PaymentOptionId = table.Column<int>(type: "int", nullable: true),
+                    CuisineId = table.Column<int>(type: "int", nullable: false),
+                    AvgPayment = table.Column<float>(type: "real", nullable: false),
+                    Table_setting = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageId = table.Column<int>(type: "int", nullable: false),
+                    Menu = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Reviews = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TableId = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -295,42 +311,35 @@ namespace RestApp.Server.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PaymentTypes", x => x.Id);
+                    table.PrimaryKey("PK_Restaurants", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PaymentTypes_Restaurant_RestaurantId",
-                        column: x => x.RestaurantId,
-                        principalTable: "Restaurant",
+                        name: "FK_Restaurants_Cuisines_CuisineId",
+                        column: x => x.CuisineId,
+                        principalTable: "Cuisines",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Restaurants_Images_ImageId",
+                        column: x => x.ImageId,
+                        principalTable: "Images",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Restaurants_PaymentTypes_PaymentOptionId",
+                        column: x => x.PaymentOptionId,
+                        principalTable: "PaymentTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Restaurants_Tables_TableId",
+                        column: x => x.TableId,
+                        principalTable: "Tables",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tables",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Pax = table.Column<int>(type: "int", nullable: false),
-                    RestaurantId = table.Column<int>(type: "int", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tables", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Tables_Restaurant_RestaurantId",
-                        column: x => x.RestaurantId,
-                        principalTable: "Restaurant",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Booking",
+                name: "Bookings",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -348,25 +357,53 @@ namespace RestApp.Server.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Booking", x => x.Id);
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Booking_Customers_CustomerId",
+                        name: "FK_Bookings_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Booking_Restaurant_RestaurantId",
+                        name: "FK_Bookings_Restaurants_RestaurantId",
                         column: x => x.RestaurantId,
-                        principalTable: "Restaurant",
+                        principalTable: "Restaurants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Booking_Tables_TableId",
+                        name: "FK_Bookings_Tables_TableId",
                         column: x => x.TableId,
                         principalTable: "Tables",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Foods",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Catagory = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Cost = table.Column<float>(type: "real", nullable: false),
+                    RestId = table.Column<int>(type: "int", nullable: false),
+                    RestaurantsId = table.Column<int>(type: "int", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Foods", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Foods_Restaurants_RestaurantsId",
+                        column: x => x.RestaurantsId,
+                        principalTable: "Restaurants",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -374,32 +411,32 @@ namespace RestApp.Server.Migrations
                 columns: new[] { "Id", "ContactNumber", "CreatedBy", "DateCreated", "DateUpdated", "EmailAddress", "FirstName", "LastName", "Request", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "90896745", "System", new DateTime(2022, 1, 19, 12, 51, 41, 97, DateTimeKind.Local).AddTicks(2483), new DateTime(2022, 1, 19, 12, 51, 41, 100, DateTimeKind.Local).AddTicks(5850), "Low@abc.com", "Low", "Ying Yang", "NIL", "System" },
-                    { 2, "90893333", "System", new DateTime(2022, 1, 19, 12, 51, 41, 100, DateTimeKind.Local).AddTicks(6863), new DateTime(2022, 1, 19, 12, 51, 41, 100, DateTimeKind.Local).AddTicks(6868), "Xing@abc.com", "Ho", "Rong Xing", "No Seafood", "System" }
+                    { 1, "90896745", "System", new DateTime(2022, 1, 26, 16, 26, 53, 101, DateTimeKind.Local).AddTicks(3298), new DateTime(2022, 1, 26, 16, 26, 53, 102, DateTimeKind.Local).AddTicks(8459), "Low@abc.com", "Low", "Ying Yang", "NIL", "System" },
+                    { 2, "90893333", "System", new DateTime(2022, 1, 26, 16, 26, 53, 102, DateTimeKind.Local).AddTicks(9325), new DateTime(2022, 1, 26, 16, 26, 53, 102, DateTimeKind.Local).AddTicks(9329), "Xing@abc.com", "Ho", "Rong Xing", "No Seafood", "System" }
                 });
 
             migrationBuilder.InsertData(
                 table: "PaymentTypes",
-                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "RestaurantId", "Type", "UpdatedBy" },
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Type", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(523), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(532), null, "Visa", "System" },
-                    { 2, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(536), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(536), null, "Mastercard", "System" },
-                    { 3, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(538), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(539), null, "Amex", "System" },
-                    { 4, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(540), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(541), null, "UnionPay", "System" },
-                    { 5, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(543), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(544), null, "NETS", "System" },
-                    { 6, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(545), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(546), null, "QR pay", "System" }
+                    { 1, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1109), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1117), "Visa", "System" },
+                    { 2, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1120), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1121), "Mastercard", "System" },
+                    { 3, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1122), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1123), "Amex", "System" },
+                    { 4, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1124), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1124), "UnionPay", "System" },
+                    { 5, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1126), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1126), "NETS", "System" },
+                    { 6, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1128), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(1128), "QR pay", "System" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Tables",
-                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Pax", "RestaurantId", "TType", "UpdatedBy" },
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Pax", "TType", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(4557), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(4563), 1, null, "1 person table", "System" },
-                    { 2, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(4567), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(4568), 2, null, "2 person table", "System" },
-                    { 3, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(4570), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(4571), 3, null, "3 person table", "System" },
-                    { 4, "System", new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(4573), new DateTime(2022, 1, 19, 12, 51, 41, 102, DateTimeKind.Local).AddTicks(4574), 4, null, "4 person table", "System" }
+                    { 1, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(4649), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(4654), 1, "1 person table", "System" },
+                    { 2, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(4657), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(4658), 2, "2 person table", "System" },
+                    { 3, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(4660), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(4660), 3, "3 person table", "System" },
+                    { 4, "System", new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(4662), new DateTime(2022, 1, 26, 16, 26, 53, 104, DateTimeKind.Local).AddTicks(4662), 4, "4 person table", "System" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -442,18 +479,18 @@ namespace RestApp.Server.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Booking_CustomerId",
-                table: "Booking",
+                name: "IX_Bookings_CustomerId",
+                table: "Bookings",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Booking_RestaurantId",
-                table: "Booking",
+                name: "IX_Bookings_RestaurantId",
+                table: "Bookings",
                 column: "RestaurantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Booking_TableId",
-                table: "Booking",
+                name: "IX_Bookings_TableId",
+                table: "Bookings",
                 column: "TableId");
 
             migrationBuilder.CreateIndex(
@@ -468,14 +505,9 @@ namespace RestApp.Server.Migrations
                 column: "Expiration");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImageRestaurant_RestaurantsId",
-                table: "ImageRestaurant",
+                name: "IX_Foods_RestaurantsId",
+                table: "Foods",
                 column: "RestaurantsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PaymentTypes_RestaurantId",
-                table: "PaymentTypes",
-                column: "RestaurantId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersistedGrants_Expiration",
@@ -493,9 +525,24 @@ namespace RestApp.Server.Migrations
                 columns: new[] { "SubjectId", "SessionId", "Type" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tables_RestaurantId",
-                table: "Tables",
-                column: "RestaurantId");
+                name: "IX_Restaurants_CuisineId",
+                table: "Restaurants",
+                column: "CuisineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Restaurants_ImageId",
+                table: "Restaurants",
+                column: "ImageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Restaurants_PaymentOptionId",
+                table: "Restaurants",
+                column: "PaymentOptionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Restaurants_TableId",
+                table: "Restaurants",
+                column: "TableId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -516,16 +563,13 @@ namespace RestApp.Server.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Booking");
+                name: "Bookings");
 
             migrationBuilder.DropTable(
                 name: "DeviceCodes");
 
             migrationBuilder.DropTable(
-                name: "ImageRestaurant");
-
-            migrationBuilder.DropTable(
-                name: "PaymentTypes");
+                name: "Foods");
 
             migrationBuilder.DropTable(
                 name: "PersistedGrants");
@@ -540,13 +584,19 @@ namespace RestApp.Server.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
+                name: "Restaurants");
+
+            migrationBuilder.DropTable(
+                name: "Cuisines");
+
+            migrationBuilder.DropTable(
+                name: "Images");
+
+            migrationBuilder.DropTable(
+                name: "PaymentTypes");
+
+            migrationBuilder.DropTable(
                 name: "Tables");
-
-            migrationBuilder.DropTable(
-                name: "Image");
-
-            migrationBuilder.DropTable(
-                name: "Restaurant");
         }
     }
 }

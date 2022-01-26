@@ -26,22 +26,22 @@ namespace RestApp.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetRestaurant()
         {
-            var restaurants = await _unitOfWork.Restaurants.GetAll(includes: q => q.Include(x => x.Cuisine).Include(x => x.ClosingTime).Include(x => x.PaymentOption));
-            return Ok(restaurants);
+            var Restaurants = await _unitOfWork.Restaurants.GetAll(includes: q => q.Include(x => x.Cuisine).Include(x => x.PaymentOption).Include((x => x.Table)));
+            return Ok(Restaurants);
         }
 
         // GET: api/Restaurants/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
+        public async Task<ActionResult> GetRestaurant(int id)
         {
-            var restaurant = await _unitOfWork.Restaurants.Get(q => q.Id == id);
+            var Restaurant = await _unitOfWork.Restaurants.Get(q => q.Id == id);
 
-            if (restaurant == null)
+            if (Restaurant == null)
             {
                 return NotFound();
             }
 
-            return Ok(restaurant);
+            return Ok(Restaurant);
         }
 
         // PUT: api/Restaurants/5
@@ -62,7 +62,7 @@ namespace RestApp.Server.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (! await RestaurantExists(id))
+                if (!await RestaurantExists(id))
                 {
                     return NotFound();
                 }

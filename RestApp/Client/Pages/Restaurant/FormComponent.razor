@@ -5,7 +5,7 @@
     <ValidationSummary />
     <fieldset disabled="@Disabled">
         <div class="form-group">
-            <label>Restaurant: </label>
+            <label>Restaurant Name: </label>
             <div>
                 <InputText @bind-Value="restaurant.Name" class="form-control" />
                 <ValidationMessage For="@(()=> restaurant.Name)" />
@@ -13,7 +13,7 @@
         </div>
 
         <div class="form-group">
-            <label>Make: </label>
+            <label>Cuisine: </label>
             <div>
                 <InputSelect @bind-Value="restaurant.CuisineId" class="form-control">
                     <option value="">-- Select Cuisine --</option>
@@ -32,7 +32,7 @@
         <div class="form-group">
             <label>Phone Number: </label>
             <div>
-                <InputNumber @bind-Value="restaurant.PhoneNumber" class="form-control" />
+                <InputText @bind-Value="restaurant.PhoneNumber" class="form-control" />
                 <ValidationMessage For="@(()=> restaurant.PhoneNumber)" />
             </div>
         </div>
@@ -53,7 +53,7 @@
             @ButtonText
         </button>
     }
-    <BackToList Target="tables" />
+    <BackToList Target="restaurants" />
 </EditForm>
 @code {
     [Parameter] public bool Disabled { get; set; } = false;

@@ -1,16 +1,17 @@
+using RestApp.Server.Data;
+using RestApp.Server.IRepository;
+using RestApp.Server.Models;
+using RestApp.Server.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RestApp.Server.Data;
-using RestApp.Server.IRepository;
-using RestApp.Server.Models;
-using RestApp.Server.Repository;
 using System.Linq;
 
 namespace RestApp.Server
@@ -43,7 +44,8 @@ namespace RestApp.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(op => op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddRazorPages();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
         }

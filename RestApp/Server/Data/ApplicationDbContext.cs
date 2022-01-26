@@ -15,13 +15,13 @@ namespace RestApp.Server.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
-        //public DbSet<Booking> Bookings { get; set; }
-        //public DbSet<Cuisine> Cuisines { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Cuisine> Cuisines { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        //public DbSet<Food> Foods { get; set; }
-        //public DbSet<Image> Images { get; set; }
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<Image> Images { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
-        //public DbSet<Restaurant> Restaurants {get; set;}
+        public DbSet<Restaurant> Restaurants {get; set;}
         public DbSet<Table> Tables { get; set; }
         
 
@@ -43,5 +43,6 @@ namespace RestApp.Server.Data
             
 
         }
+        
     }
 }

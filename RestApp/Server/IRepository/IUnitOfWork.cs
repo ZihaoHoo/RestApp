@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RestApp.Server.IRepository
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         Task Save(HttpContext httpContext);
         IGenericRepository<Cuisine> Cuisines { get; }

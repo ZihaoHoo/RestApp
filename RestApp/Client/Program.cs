@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,8 +22,7 @@ namespace RestApp.Client
 
             builder.Services.AddHttpClient("RestApp.ServerAPI", (sp, client) => {
                 client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
-                client.EnableIntercept(sp);
-            })
+                client.EnableIntercept(sp);})
                 .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
             // Supply HttpClient instances that include access tokens when making requests to the server project
