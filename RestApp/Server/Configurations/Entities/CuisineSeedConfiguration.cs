@@ -15,30 +15,37 @@ namespace RestApp.Server.Configurations.Entities
             builder.HasData(
                 new Cuisine
                 {
+                    Id=1,
                     Name = "French"
                 },
                 new Cuisine
                 {
+                    Id = 2,
                     Name = "Japanese"
                 },
                 new Cuisine
                 {
+                    Id = 3,
                     Name = "Indian"
                 },
                 new Cuisine
                 {
+                    Id = 4,
                     Name = "Thai"
                 },
                 new Cuisine
                 {
+                    Id = 5,
                     Name = "Chinese"
                 },
                 new Cuisine
                 {
+                    Id = 6,
                     Name = "American"
                 },
                 new Cuisine
                 {
+                    Id = 7,
                     Name = "Italian"
                 }
                 );

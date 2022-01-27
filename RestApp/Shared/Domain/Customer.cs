@@ -13,7 +13,8 @@ namespace RestApp.Shared.Domain
         public string ContactNumber { get; set; }
         public string EmailAddress { get; set; }
         public string Request { get; set; }
-        public virtual List<Booking> Bookings { get; set; }
+        public int BookingId { get; set; }
+        public virtual List<Booking> Booking { get; set; }
         
     }
 }

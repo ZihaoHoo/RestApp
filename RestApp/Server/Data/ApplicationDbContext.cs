@@ -30,7 +30,7 @@ namespace RestApp.Server.Data
             base.OnModelCreating(builder);
 
             //builder.ApplyConfiguration(new BookingSeedConfiguration());
-            //builder.ApplyConfiguration(new CuisineSeedConfiguration());
+            builder.ApplyConfiguration(new CuisineSeedConfiguration());
             builder.ApplyConfiguration(new CustomerSeedConfiguration());
             //builder.ApplyConfiguration(new FoodSeedConfiguration());
             //builder.ApplyConfiguration(new ImageSeedConfiguration());
