@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace RestApp.Shared.Domain
 {
@@ -15,6 +11,6 @@ namespace RestApp.Shared.Domain
         public string Request { get; set; }
         public int BookingId { get; set; }
         public virtual List<Booking> Booking { get; set; }
-        
+
     }
 }

@@ -1,15 +1,13 @@
-﻿using RestApp.Server.IRepository;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RestApp.Server.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using RestApp.Shared.Domain;
+using RestApp.Server.IRepository;
 using RestApp.Server.Models;
+using RestApp.Shared.Domain;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RestApp.Server.Repository
 {

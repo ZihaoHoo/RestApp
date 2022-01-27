@@ -45,6 +45,23 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label>Opening Time: </label>
+            <div>
+                <SfTimePicker TValue="DateTime?" @bind-Value='@restaurant.OpeningTime' StrictMode=true Min='@MinVal' Max='@MaxVal'>
+                </SfTimePicker>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Closing Time: </label>
+            <div>
+                <SfTimePicker TValue="DateTime?" @bind-Value='@restaurant.ClosingTime' StrictMode=true Min='@MinVal' Max='@MaxVal' >
+                </SfTimePicker>
+            </div>
+        </div>
+
+
 
     </fieldset>
     @if (!Disabled)
@@ -60,6 +77,9 @@
     [Parameter] public Restaurant restaurant { get; set; }
     [Parameter] public string ButtonText { get; set; } = "Save";
     [Parameter] public EventCallback OnValidSubmit { get; set; }
+    [Parameter] public DateTime MinVal { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 00, 00, 00);
+    [Parameter] public DateTime MaxVal { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 00, 00);
+
 
     private IList<Table> Tables;
     private IList<Cuisine> Cuisines;

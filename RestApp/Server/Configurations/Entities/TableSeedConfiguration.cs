@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestApp.Shared.Domain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestApp.Server.Configurations.Entities
 {
@@ -16,8 +13,8 @@ namespace RestApp.Server.Configurations.Entities
                 {
 
                     Id = 1,
-                    TType ="1 person table",
-                    Pax =1,
+                    TType = "1 person table",
+                    Pax = 1,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",

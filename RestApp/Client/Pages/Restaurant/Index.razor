@@ -39,8 +39,7 @@ else
                     <td>@restaurant.Cuisine.Name</td>
                     <td>@restaurant.PhoneNumber</td>
                     <td>@restaurant.Address</td>
-                    <td>@restaurant.OpeningTime</td>
-                    <td>@restaurant.ClosingTime</td>
+                    <td>@restaurant.OpeningTime.Value.ToShortTimeString() - @restaurant.ClosingTime.Value.ToShortTimeString()</td>
                     <td>
                         <a href="/restaurants/view/@restaurant.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

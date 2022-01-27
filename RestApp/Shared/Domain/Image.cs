@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace RestApp.Shared.Domain
 {
@@ -10,7 +6,7 @@ namespace RestApp.Shared.Domain
     {
         public string Img_url { get; set; }
         public int RestId { get; set; }
-        public virtual List<Restaurant> Restaurants { get; set; }
+        public virtual Restaurant Restaurants { get; set; }
 
     }
 }

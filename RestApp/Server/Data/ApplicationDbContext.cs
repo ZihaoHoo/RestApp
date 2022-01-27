@@ -1,10 +1,10 @@
-﻿using RestApp.Server.Configurations.Entities;
-using RestApp.Server.Models;
-using RestApp.Shared.Domain;
-using IdentityServer4.EntityFramework.Options;
+﻿using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using RestApp.Server.Configurations.Entities;
+using RestApp.Server.Models;
+using RestApp.Shared.Domain;
 
 namespace RestApp.Server.Data
 {
@@ -21,9 +21,9 @@ namespace RestApp.Server.Data
         public DbSet<Food> Foods { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
-        public DbSet<Restaurant> Restaurants {get; set;}
+        public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Table> Tables { get; set; }
-        
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -37,12 +37,12 @@ namespace RestApp.Server.Data
             builder.ApplyConfiguration(new PaymentTypeSeedConfiguration());
             //builder.ApplyConfiguration(new RestaurantSeedConfiguration());
             builder.ApplyConfiguration(new TableSeedConfiguration());
-            
-            
-            
-            
+
+
+
+
 
         }
-        
+
     }
 }

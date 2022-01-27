@@ -1,7 +1,7 @@
-﻿using RestApp.Server.Data;
-using RestApp.Server.IRepository;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
+using RestApp.Server.Data;
+using RestApp.Server.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

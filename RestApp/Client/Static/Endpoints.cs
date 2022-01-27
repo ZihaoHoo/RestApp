@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RestApp.Client.Static
+﻿namespace RestApp.Client.Static
 {
     public static class Endpoints
     {

@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RestApp.Shared.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestApp.Server.Configurations.Entities
 {
@@ -15,7 +11,7 @@ namespace RestApp.Server.Configurations.Entities
             builder.HasData(
                 new Cuisine
                 {
-                    Id=1,
+                    Id = 1,
                     Name = "French"
                 },
                 new Cuisine

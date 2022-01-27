@@ -1,8 +1,5 @@
-﻿using RestApp.Shared.Domain;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Http;
+using RestApp.Shared.Domain;
 using System.Threading.Tasks;
 
 namespace RestApp.Server.IRepository
