@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RestApp.Server.Migrations
 {
-    public partial class New_db : Migration
+    public partial class newdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -419,8 +419,8 @@ namespace RestApp.Server.Migrations
                 columns: new[] { "Id", "BookingId", "ContactNumber", "CreatedBy", "DateCreated", "DateUpdated", "EmailAddress", "FirstName", "LastName", "Request", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, 0, "90896745", "System", new DateTime(2022, 1, 28, 1, 58, 1, 661, DateTimeKind.Local).AddTicks(3187), new DateTime(2022, 1, 28, 1, 58, 1, 664, DateTimeKind.Local).AddTicks(8642), "Low@abc.com", "Low", "Ying Yang", "NIL", "System" },
-                    { 2, 0, "90893333", "System", new DateTime(2022, 1, 28, 1, 58, 1, 664, DateTimeKind.Local).AddTicks(9470), new DateTime(2022, 1, 28, 1, 58, 1, 664, DateTimeKind.Local).AddTicks(9474), "Xing@abc.com", "Ho", "Rong Xing", "No Seafood", "System" }
+                    { 1, 0, "90896745", "System", new DateTime(2022, 1, 28, 18, 3, 43, 376, DateTimeKind.Local).AddTicks(1284), new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(2112), "Low@abc.com", "Low", "Ying Yang", "NIL", "System" },
+                    { 2, 0, "90893333", "System", new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(3027), new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(3032), "Xing@abc.com", "Ho", "Rong Xing", "No Seafood", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -428,12 +428,12 @@ namespace RestApp.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Type", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 6, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3733), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3734), "QR pay", "System" },
-                    { 5, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3731), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3732), "NETS", "System" },
-                    { 4, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3729), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3730), "UnionPay", "System" },
-                    { 1, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3716), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3721), "Visa", "System" },
-                    { 2, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3725), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3726), "Mastercard", "System" },
-                    { 3, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3728), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(3728), "Amex", "System" }
+                    { 6, "System", new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7502), new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7503), "QR pay", "System" },
+                    { 5, "System", new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7495), new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7495), "NETS", "System" },
+                    { 4, "System", new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7492), new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7493), "UnionPay", "System" },
+                    { 1, "System", new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7480), new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7485), "Visa", "System" },
+                    { 2, "System", new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7488), new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7489), "Mastercard", "System" },
+                    { 3, "System", new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7490), new DateTime(2022, 1, 28, 18, 3, 43, 377, DateTimeKind.Local).AddTicks(7491), "Amex", "System" }
                 });
 
             migrationBuilder.InsertData(
@@ -441,10 +441,10 @@ namespace RestApp.Server.Migrations
                 columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Pax", "TType", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 3, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(7151), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(7152), 3, "3 person table", "System" },
-                    { 1, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(7141), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(7146), 1, "1 person table", "System" },
-                    { 2, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(7149), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(7150), 2, "2 person table", "System" },
-                    { 4, "System", new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(7153), new DateTime(2022, 1, 28, 1, 58, 1, 665, DateTimeKind.Local).AddTicks(7154), 4, "4 person table", "System" }
+                    { 3, "System", new DateTime(2022, 1, 28, 18, 3, 43, 378, DateTimeKind.Local).AddTicks(2019), new DateTime(2022, 1, 28, 18, 3, 43, 378, DateTimeKind.Local).AddTicks(2021), 3, "3 person table", "System" },
+                    { 1, "System", new DateTime(2022, 1, 28, 18, 3, 43, 378, DateTimeKind.Local).AddTicks(1994), new DateTime(2022, 1, 28, 18, 3, 43, 378, DateTimeKind.Local).AddTicks(2004), 1, "1 person table", "System" },
+                    { 2, "System", new DateTime(2022, 1, 28, 18, 3, 43, 378, DateTimeKind.Local).AddTicks(2014), new DateTime(2022, 1, 28, 18, 3, 43, 378, DateTimeKind.Local).AddTicks(2016), 2, "2 person table", "System" },
+                    { 4, "System", new DateTime(2022, 1, 28, 18, 3, 43, 378, DateTimeKind.Local).AddTicks(2023), new DateTime(2022, 1, 28, 18, 3, 43, 378, DateTimeKind.Local).AddTicks(2025), 4, "4 person table", "System" }
                 });
 
             migrationBuilder.CreateIndex(

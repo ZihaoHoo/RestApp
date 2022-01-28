@@ -3,42 +3,48 @@
 @inject IJSRuntime js
 @attribute [Authorize]
 
-<body>
-    <div>
-        <table>
-            <tbody>
-                @foreach (var restaurant in Restaurants)
-                {
-                    <tr>
-                        <td>
-                            <div height="auto,auto,auto,156px">
-                                <div height="100,100,115,100%">
-                                    <img src="https://qul.imgix.net/c489aa2b-7abb-47c8-90c1-3138eda84fab/435795_sld.jpg?auto=format&w=230&h=156&fit=crop&ch=Viewport-Width%2CWidth%2CDPR" width="320" height="180">
-                                </div>
-                                <h2>@restaurant.Name</h2>
-                                <span>Address: @restaurant.Address</span>
+@if (Restaurants == null)
+{
+    <div class="alert alert-info">Loading Restaurants...</div>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Rest App</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var restaurant in Restaurants)
+            {
+                <tr>
+                    <td>
+                        <div height="auto,auto,auto,156px">
+                            <div height="100,100,115,100%">
+                                <img src="https://qul.imgix.net/c489aa2b-7abb-47c8-90c1-3138eda84fab/435795_sld.jpg?auto=format&w=230&h=156&fit=crop&ch=Viewport-Width%2CWidth%2CDPR" width="320" height="180">
+                            </div>
+                            <h2>@restaurant.Name</h2>
+                            <span>Address: @restaurant.Address</span>
+                            <div>
+                                <span>Cuisine: @restaurant.Cuisine.Name</span>
                                 <div>
-                                    <span>Cuisine: @restaurant.Cuisine.Name</span>
-                                    <div>
-                                        <p>Contact Number: @restaurant.PhoneNumber</p>
-                                        <p>Opening Time: @restaurant.OpeningTime</p>
-                                        <p>Closing Time: >@restaurant.ClosingTime</p>
-                                        <a href="" class="btn btn-warning">
-                                            <span class="oi oi-check"></span>
-                                        </a>
-                                    </div>
+                                    <p>Contact Number: @restaurant.PhoneNumber</p>
+                                    <p>Operating hours: @restaurant.OpeningTime.Value.ToShortTimeString() - @restaurant.ClosingTime.Value.ToShortTimeString()</p>
+                                    <a href="" class="btn btn-warning">
+                                        <span class="oi oi-check"></span>
+                                    </a>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</body>
-
-@code {
-    private List<Restaurant> Restaurants;
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+    @code {
+private List<Restaurant> Restaurants;
     protected async override Task OnInitializedAsync()
     {
         Restaurants = await _client.GetFromJsonAsync<List<Restaurant>>($"{Endpoints.RestaurantsEndpoint}");
@@ -53,4 +59,4 @@
             await OnInitializedAsync();
         }
     }
-}
+    }
