@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Booking\" />
     <Folder Include="Pages\Food\" />
     <Folder Include="Pages\Image\" />
   </ItemGroup>
