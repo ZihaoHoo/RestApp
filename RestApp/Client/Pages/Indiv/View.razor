@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/individual/{id:int}"
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
@@ -22,7 +22,7 @@ else
                     <td>
                         <div height="auto,auto,auto,156px">
                             <div height="100,100,115,100%">
-                                <img src="@restaurant.Image.Img_url" width="320" height="180">
+                                <img src="https://qul.imgix.net/c489aa2b-7abb-47c8-90c1-3138eda84fab/435795_sld.jpg?auto=format&w=230&h=156&fit=crop&ch=Viewport-Width%2CWidth%2CDPR" width="320" height="180">
                             </div>
                             <h2>@restaurant.Name</h2>
                             <span>Address: @restaurant.Address</span>
@@ -45,7 +45,7 @@ else
 }
 
 @code {
-private List<Restaurant> Restaurants;
+    private List<Restaurant> Restaurants;
     protected async override Task OnInitializedAsync()
     {
         Restaurants = await _client.GetFromJsonAsync<List<Restaurant>>($"{Endpoints.RestaurantsEndpoint}");
@@ -60,4 +60,4 @@ private List<Restaurant> Restaurants;
             await OnInitializedAsync();
         }
     }
-    }
+}

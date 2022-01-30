@@ -5,8 +5,5 @@ namespace RestApp.Shared.Domain
     public class Image : BaseDomainModel
     {
         public string Img_url { get; set; }
-        public int RestId { get; set; }
-        public virtual Restaurant Restaurants { get; set; }
-
     }
 }

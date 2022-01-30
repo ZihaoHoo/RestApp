@@ -30,6 +30,40 @@
         </div>
 
         <div class="form-group">
+            <label>Menu: </label>
+            <div>
+                <InputSelect @bind-Value="restaurant.FoodId" class="form-control">
+                    <option value="">-- Select Menu --</option>
+                    @if (Foods != null)
+                    {
+                        foreach (var food in Foods)
+                        {
+                            <option value="@food.Id">@food.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(()=> restaurant.FoodId)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Image: </label>
+            <div>
+                <InputSelect @bind-Value="restaurant.ImageId" class="form-control">
+                    <option value="">-- Select Image --</option>
+                    @if (Images != null)
+                    {
+                        foreach (var image in Images)
+                        {
+                            <option value="@image.Id">@image.Img_url</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(()=> restaurant.ImageId)" />
+            </div>
+        </div>
+
+        <div class="form-group">
             <label>Phone Number: </label>
             <div>
                 <InputText @bind-Value="restaurant.PhoneNumber" class="form-control" />
@@ -56,11 +90,10 @@
         <div class="form-group">
             <label>Closing Time: </label>
             <div>
-                <SfTimePicker TValue="DateTime?" @bind-Value='@restaurant.ClosingTime' StrictMode=true Min='@MinVal' Max='@MaxVal' >
+                <SfTimePicker TValue="DateTime?" @bind-Value='@restaurant.ClosingTime' StrictMode=true Min='@MinVal' Max='@MaxVal'>
                 </SfTimePicker>
             </div>
         </div>
-
 
 
     </fieldset>
@@ -84,6 +117,8 @@
     private IList<Table> Tables;
     private IList<Cuisine> Cuisines;
     private IList<PaymentType> PaymentTypes;
+    private IList<Food> Foods;
+    private IList<Image> Images;
 
     protected async override Task OnInitializedAsync()
     {

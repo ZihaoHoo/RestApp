@@ -11,23 +11,8 @@ namespace RestApp.Server.Configurations.Entities
             builder.HasData(
                 new Food
                 {
+                    Id = 1,
                     Name = "pdf/Italian Vecchio Menu.pdf"
-                },
-                new Food
-                {
-                    Name = ""
-                },
-                new Food
-                {
-                    Name = ""
-                },
-                new Food
-                {
-                    Name = ""
-                },
-                new Food
-                {
-                    Name = ""
                 }
                 );
         }

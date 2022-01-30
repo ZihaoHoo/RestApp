@@ -47,7 +47,7 @@
         <div class="form-group">
             <label>Restaurant: </label>
             <div>
-                <InputSelect @bind-Value="booking.RestId" class="form-control">
+                <InputSelect @bind-Value="booking.RestaurantId" class="form-control">
                     <option value="">-- Select Restaurant --</option>
                     @if (Restaurants != null)
                     {
@@ -57,7 +57,7 @@
                         }
                     }
                 </InputSelect>
-                <ValidationMessage For="@(()=> booking.RestId)" />
+                <ValidationMessage For="@(()=> booking.RestaurantId)" />
             </div>
         </div>
 
