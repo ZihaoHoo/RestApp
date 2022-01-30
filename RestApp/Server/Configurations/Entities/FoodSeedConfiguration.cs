@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RestApp.Shared.Domain;
+using System;
 
 namespace RestApp.Server.Configurations.Entities
 {
@@ -13,6 +14,10 @@ namespace RestApp.Server.Configurations.Entities
                 {
                     Id = 1,
                     Name = "pdf/Italian Vecchio Menu.pdf",
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System"
                 }
                 );
         }
