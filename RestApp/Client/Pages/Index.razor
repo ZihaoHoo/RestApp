@@ -22,7 +22,7 @@ else
                     <td>
                         <div height="auto,auto,auto,156px">
                             <div height="100,100,115,100%">
-                                <img src="@restaurant.Image.Img_url" width="320" height="180">
+                                <img src = "@restaurant.Image.Img_url" width="320" height="180">
                             </div>
                             <h2>@restaurant.Name</h2>
                             <span>Address: @restaurant.Address</span>
@@ -31,6 +31,7 @@ else
                                 <div>
                                     <p>Contact Number: @restaurant.PhoneNumber</p>
                                     <p>Operating hours: @restaurant.OpeningTime.Value.ToShortTimeString() - @restaurant.ClosingTime.Value.ToShortTimeString()</p>
+                                    <embed src="@restaurant.Food.Name" width="320" height="180">
                                     <a href="/individuals/@restaurant.Id" class="btn btn-primary">
                                         <span class="oi oi-target"></span>
                                     </a>

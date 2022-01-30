@@ -12,7 +12,7 @@ namespace RestApp.Server.Configurations.Entities
                 new Food
                 {
                     Id = 1,
-                    Name = "pdf/Italian Vecchio Menu.pdf"
+                    Name = "pdf/Italian Vecchio Menu.pdf",
                 }
                 );
         }

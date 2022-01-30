@@ -11,7 +11,6 @@ namespace RestApp.Server.Configurations.Entities
             builder.HasData(
                 new Image
                 {
-
                     Id = 1,
                     Img_url = "https://qul.imgix.net/c489aa2b-7abb-47c8-90c1-3138eda84fab/435795_sld.jpg?auto=format&w=230&h=156&fit=crop&ch=Viewport-Width%2CWidth%2CDPR",
                 },

@@ -125,5 +125,7 @@
         Tables = await _client.GetFromJsonAsync<List<Table>>($"{Endpoints.TablesEndpoint}");
         Cuisines = await _client.GetFromJsonAsync<List<Cuisine>>($"{Endpoints.CuisinesEndpoint}");
         PaymentTypes = await _client.GetFromJsonAsync<List<PaymentType>>($"{Endpoints.PaymentTypesEndpoint}");
+        Foods = await _client.GetFromJsonAsync<List<Food>>($"{Endpoints.FoodsEndpoint}");
+        Images = await _client.GetFromJsonAsync<List<Image>>($"{Endpoints.ImagesEndpoint}");
     }
 }

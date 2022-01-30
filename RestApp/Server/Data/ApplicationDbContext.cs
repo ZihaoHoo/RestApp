@@ -31,7 +31,8 @@ namespace RestApp.Server.Data
 
             builder.ApplyConfiguration(new CuisineSeedConfiguration());
             builder.ApplyConfiguration(new CustomerSeedConfiguration());
-
+            builder.ApplyConfiguration(new FoodSeedConfiguration());
+            builder.ApplyConfiguration(new ImageSeedConfiguration());
             builder.ApplyConfiguration(new PaymentTypeSeedConfiguration());
 
             builder.ApplyConfiguration(new TableSeedConfiguration());
