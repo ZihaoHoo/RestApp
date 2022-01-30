@@ -4,7 +4,6 @@
 @attribute [Authorize]
 
 
-
 <h3 class="card-title">Bookings</h3>
 <br />
 <a href="/bookings/create" class="btn btn-secondary">
@@ -20,7 +19,7 @@
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table table-responsive" >
         <thead>
             <tr>
                 <th>Bookings Id</th>
@@ -33,7 +32,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var booking in Bookings)
+            @foreach (var booking in Bookings )
             {
                 <tr>
                     <td>@booking.Id</td>
@@ -59,7 +58,8 @@ else
     </table>
 }
 @code {
-    private IList<Booking> Bookings;
+    private List<Booking> Bookings;
+
     protected async override Task OnInitializedAsync()
     {
         Bookings = await _client.GetFromJsonAsync<List<Booking>>($"{Endpoints.BookingsEndpoint}");

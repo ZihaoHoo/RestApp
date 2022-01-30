@@ -20,6 +20,6 @@ namespace RestApp.Shared.Domain
         public string Reviews { get; set; }
         //public int TableId { get; set; }
         //public virtual Table Table { get; set; }
-        public List<Booking> Booking { get; set; }
+        //public virtual List<Booking> Bookings { get; set; }
     }
 }

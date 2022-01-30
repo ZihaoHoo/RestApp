@@ -25,6 +25,9 @@
             <label>reservation Date: </label>
             <div>
                 <InputDate @bind-Value="booking.BkDate" class="form-control">
+                    @if(booking.BkDate==null){
+                        booking.BkDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                    }
                 </InputDate>
                 <ValidationMessage For="@(()=> booking.BkDate)" />
             </div>
@@ -33,7 +36,10 @@
         <div class="form-group">
             <label>reservation Time: </label>
             <div>
-                <SfTimePicker TValue="DateTime?" @bind-Value='@booking.BkTime' StrictMode=true Min='@MinVal' Max='@MaxVal'>
+                <SfTimePicker TValue="DateTime?" @bind-Value='@booking.BkTime' StrictMode=true Min='@MinVal' Max='@MaxVal'  ShowClearButton="true">
+                    @if (booking.BkTime == null) {
+                        booking.BkDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, 0, 0);
+                    }
                 </SfTimePicker>
             </div>
         </div>
