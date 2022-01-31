@@ -1,0 +1,69 @@
+﻿@page "/images/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+
+
+<h3 class="card-title">Tables</h3>
+<br />
+<a href="/images/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Images
+</a>
+<br />
+<br />
+
+@if (Images == null)
+{
+<div class="alert alert-info">Loading Images ...</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Restaurant Name</th>
+                <th>Restaurant Images</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var image in Images)
+            {
+                <tr>
+                    <td>@image.Rest_Name</td>
+                    <td><img src="@image.Img_url" width="250" height="250"/></td>
+                    <td>
+                        <a href="/images/view/@image.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/images/edit/@image.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(image.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<Image> Images;
+    protected async override Task OnInitializedAsync()
+    {
+        Images = await _client.GetFromJsonAsync<List<Image>>($"{Endpoints.ImagesEndpoint}");
+    }
+    async Task Delete(int ImageId)
+    {
+        var image = Images.First(q => q.Id == ImageId);
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete Image for {image.Rest_Name}?");
+        if (confirm)
+        {
+            await _client.DeleteAsync($"{Endpoints.ImagesEndpoint}/{ImageId}");
+            await OnInitializedAsync();
+        }
+    }
+}
