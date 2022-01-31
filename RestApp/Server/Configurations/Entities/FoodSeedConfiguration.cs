@@ -18,6 +18,15 @@ namespace RestApp.Server.Configurations.Entities
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
                     UpdatedBy = "System"
+                },
+                new Food
+                {
+                Id = 2,
+                    Name = "pdf/American Diner.pdf",
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System"
                 }
                 );
         }
