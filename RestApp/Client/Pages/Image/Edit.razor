@@ -1,0 +1,23 @@
+﻿@page "/images/edit/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3>Edit Image</h3>
+<FormComponent ButtonText="Update" OnValidSubmit="EditImage" image="image" />
+
+@code {
+    [Parameter] public int id { get; set; }
+    Image image = new Image();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        image = await _client.GetFromJsonAsync<Image>($"{Endpoints.ImagesEndpoint}/{id}");
+    }
+
+    async Task EditImage()
+    {
+        await _client.PutAsJsonAsync($"{Endpoints.ImagesEndpoint}/{id}", image);
+        _navManager.NavigateTo("/tables/");
+    }
+
+}

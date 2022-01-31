@@ -1,0 +1,25 @@
+﻿@page "/images/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3 class="card-title">Add New Image</h3>
+<hr />
+<br />
+<FormComponent ButtonText="Create" OnValidSubmit="CreateImage" image="image" />
+
+@code {
+    Image image = new Image();
+
+    private IList<Image> Images;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Images = await _client.GetFromJsonAsync<List<Image>>($"{Endpoints.ImagesEndpoint}");
+    }
+
+    private async Task CreateImage()
+    {
+        await _client.PostAsJsonAsync(Endpoints.ImagesEndpoint, image);
+        _navManager.NavigateTo("/paymentTypes/");
+    }
+}
