@@ -31,7 +31,7 @@ else
                                 <div>
                                     <p>Contact Number: @restaurant.PhoneNumber</p>
                                     <p>Operating hours: @restaurant.OpeningTime.Value.ToShortTimeString() - @restaurant.ClosingTime.Value.ToShortTimeString()</p>
-                                    <iframe src="@restaurant.Menu.Path_url" width="320" height="180" />
+                                    <embed src="@restaurant.Food.Name" width="320" height="180">
                                     <a href="/individuals/@restaurant.Id" class="btn btn-primary">
                                         <span class="oi oi-target"></span>
                                     </a>

@@ -16,16 +16,7 @@
                 <InputText @bind-Value="image.Img_url" class="form-control" />
                 <ValidationMessage For="@(()=> image.Img_url)" />
             </div>
-
-        </div>
-
-        <div class="form-group">
-            <label>Preview: </label>
-            <div>
-                <img src="@image.Img_url" />
             </div>
-        </div>
-        
     </fieldset>
     @if (!Disabled)
     {
