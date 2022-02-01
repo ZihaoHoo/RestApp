@@ -18,7 +18,7 @@ namespace RestApp.Server.Data
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Cuisine> Cuisines { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Food> Foods { get; set; }
+        public DbSet<Menu> Menus { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
@@ -31,7 +31,7 @@ namespace RestApp.Server.Data
 
             builder.ApplyConfiguration(new CuisineSeedConfiguration());
             builder.ApplyConfiguration(new CustomerSeedConfiguration());
-            builder.ApplyConfiguration(new FoodSeedConfiguration());
+            builder.ApplyConfiguration(new MenuSeedConfiguration());
             builder.ApplyConfiguration(new ImageSeedConfiguration());
             builder.ApplyConfiguration(new PaymentTypeSeedConfiguration());
 

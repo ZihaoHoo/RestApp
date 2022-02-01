@@ -17,7 +17,7 @@
     async Task EditImage()
     {
         await _client.PutAsJsonAsync($"{Endpoints.ImagesEndpoint}/{id}", image);
-        _navManager.NavigateTo("/tables/");
+        _navManager.NavigateTo("/images/");
     }
 
 }

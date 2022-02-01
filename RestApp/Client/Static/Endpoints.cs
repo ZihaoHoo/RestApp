@@ -7,7 +7,7 @@
         public static readonly string BookingsEndpoint = $"{Prefix}/bookings";
         public static readonly string CuisinesEndpoint = $"{Prefix}/cuisines";
         public static readonly string CustomersEndpoint = $"{Prefix}/customers";
-        public static readonly string FoodsEndpoint = $"{Prefix}/foods";
+        public static readonly string MenusEndpoint = $"{Prefix}/menus";
         public static readonly string ImagesEndpoint = $"{Prefix}/images";
         public static readonly string PaymentTypesEndpoint = $"{Prefix}/paymentTypes";
         public static readonly string RestaurantsEndpoint = $"{Prefix}/restaurants";

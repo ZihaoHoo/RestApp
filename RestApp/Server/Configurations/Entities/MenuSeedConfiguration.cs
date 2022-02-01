@@ -5,24 +5,26 @@ using System;
 
 namespace RestApp.Server.Configurations.Entities
 {
-    public class FoodSeedConfiguration : IEntityTypeConfiguration<Food>
+    public class MenuSeedConfiguration : IEntityTypeConfiguration<Menu>
     {
-        public void Configure(EntityTypeBuilder<Food> builder)
+        public void Configure(EntityTypeBuilder<Menu> builder)
         {
             builder.HasData(
-                new Food
+                new Menu
                 {
                     Id = 1,
-                    Name = "pdf/Italian Vecchio Menu.pdf",
+                    Rest_Name= "Italian Vecchio",
+                    Path_url = "pdf/Italian Vecchio Menu.pdf",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
                     UpdatedBy = "System"
                 },
-                new Food
+                new Menu
                 {
                 Id = 2,
-                    Name = "pdf/American Diner.pdf",
+                    Rest_Name = "American Diner",
+                    Path_url = "pdf/American Diner.pdf",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",

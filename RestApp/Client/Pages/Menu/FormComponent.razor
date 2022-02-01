@@ -1,27 +1,27 @@
-﻿<EditForm Model="@image" OnValidSubmit="@OnValidSubmit">
+﻿<EditForm Model="@menu" OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <fieldset disabled="@Disabled">
         <div class="form-group">
             <label>Restaurant Name: </label>
             <div>
-                <InputText @bind-Value="image.Rest_Name" class="form-control" />
-                <ValidationMessage For="@(()=> image.Rest_Name)" />
+                <InputText @bind-Value="menu.Rest_Name" class="form-control" />
+                <ValidationMessage For="@(()=> menu.Rest_Name)" />
             </div>
         </div>
 
         <div class="form-group">
-            <label>Image Url: </label>
+            <label>Menu Url: </label>
             <div>
-                <InputText @bind-Value="image.Img_url" class="form-control" />
-                <ValidationMessage For="@(()=> image.Img_url)" />
+                <InputText @bind-Value="menu.Path_url" class="form-control" />
+                <ValidationMessage For="@(()=> menu.Path_url)" />
             </div>
         </div>
 
         <div class="form-group">
             <label>Preview: </label>
             <div>
-                <img src="@image.Img_url" />
+                <embed src="@menu.Path_url" width="500" height="600"/>
             </div>
         </div>
     </fieldset>
@@ -31,11 +31,11 @@
             @ButtonText
         </button>
     }
-    <BackToList Target="images" />
+    <BackToList Target="menus" />
 </EditForm>
 @code {
     [Parameter] public bool Disabled { get; set; } = false;
-    [Parameter] public Image image { get; set; }
+    [Parameter] public Menu menu { get; set; }
     [Parameter] public string ButtonText { get; set; } = "Save";
     [Parameter] public EventCallback OnValidSubmit { get; set; }
 }

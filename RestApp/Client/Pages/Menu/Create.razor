@@ -1,0 +1,25 @@
+﻿@page "/menus/create/"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3 class="card-title">Add New Menu</h3>
+<hr />
+<br />
+<FormComponent ButtonText="Create" OnValidSubmit="CreateMenu" menu="menu" />
+
+@code {
+    Menu menu = new Menu();
+
+    private IList<Menu> Menus;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Menus = await _client.GetFromJsonAsync<List<Menu>>($"{Endpoints.MenusEndpoint}");
+    }
+
+    private async Task CreateMenu()
+    {
+        await _client.PostAsJsonAsync(Endpoints.MenusEndpoint, menu);
+        _navManager.NavigateTo("/menus/");
+    }
+}

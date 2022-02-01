@@ -21,7 +21,7 @@ namespace RestApp.Server.Controllers
         [HttpGet]
         public async Task<ActionResult> GetRestaurant()
         {
-            var Restaurants = await _unitOfWork.Restaurants.GetAll(includes: q => q.Include(x => x.Cuisine).Include(x => x.PaymentOption).Include(x => x.Image).Include(x => x.Food));
+            var Restaurants = await _unitOfWork.Restaurants.GetAll(includes: q => q.Include(x => x.Cuisine).Include(x => x.PaymentOption).Include(x => x.Image).Include(x => x.Menu));
             return Ok(Restaurants);
         }
 

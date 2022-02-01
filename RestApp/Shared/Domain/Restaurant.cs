@@ -16,8 +16,8 @@ namespace RestApp.Shared.Domain
         public virtual Cuisine Cuisine { get; set; }
         public float AvgPayment { get; set; }
         public string Table_setting { get; set; }
-        public int FoodId { get; set; }
-        public virtual Food Food { get; set; }
+        public int MenuId { get; set; }
+        public virtual Menu Menu { get; set; }
         public int ImageId { get; set; }
         public virtual Image Image { get; set; }
         public string Reviews { get; set; }
