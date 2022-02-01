@@ -15,7 +15,7 @@ namespace RestApp.Server.Repository
     {
         private readonly ApplicationDbContext _context;
         private IGenericRepository<Cuisine> _cuisines;
-        private IGenericRepository<Menu> _menus;
+        private IGenericRepository<Food> _foods;
         private IGenericRepository<Image> _images;
         private IGenericRepository<Booking> _bookings;
         private IGenericRepository<Customer> _customers;
@@ -34,8 +34,8 @@ namespace RestApp.Server.Repository
 
         public IGenericRepository<Cuisine> Cuisines
             => _cuisines ??= new GenericRepository<Cuisine>(_context);
-        public IGenericRepository<Menu> Menus
-            => _menus ??= new GenericRepository<Menu>(_context);
+        public IGenericRepository<Food> Foods
+            => _foods ??= new GenericRepository<Food>(_context);
         public IGenericRepository<Image> Images
             => _images ??= new GenericRepository<Image>(_context);
         public IGenericRepository<Restaurant> Restaurants

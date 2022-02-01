@@ -31,7 +31,7 @@ namespace RestApp.Client
             builder.Services.AddHttpClientInterceptor();
             builder.Services.AddScoped<HttpInterceptorService>();
 
-            builder.Services.AddSyncfusionBlazor(options => { options.IgnoreScriptIsolation = true; });
+            builder.Services.AddSyncfusionBlazor();
 
             builder.Services.AddApiAuthorization();
             await builder.Build().RunAsync();

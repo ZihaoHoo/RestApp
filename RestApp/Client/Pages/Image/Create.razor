@@ -20,6 +20,6 @@
     private async Task CreateImage()
     {
         await _client.PostAsJsonAsync(Endpoints.ImagesEndpoint, image);
-        _navManager.NavigateTo("/images/");
+        _navManager.NavigateTo("/paymentTypes/");
     }
 }
