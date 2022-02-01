@@ -8,7 +8,7 @@ namespace RestApp.Server.IRepository
     {
         Task Save(HttpContext httpContext);
         IGenericRepository<Cuisine> Cuisines { get; }
-        IGenericRepository<Food> Foods { get; }
+        IGenericRepository<Menu> Menus { get; }
         IGenericRepository<Image> Images { get; }
         IGenericRepository<Restaurant> Restaurants { get; }
         IGenericRepository<Booking> Bookings { get; }

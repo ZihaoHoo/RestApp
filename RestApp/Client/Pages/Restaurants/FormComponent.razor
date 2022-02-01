@@ -32,17 +32,17 @@
         <div class="form-group">
             <label>Menu: </label>
             <div>
-                <InputSelect @bind-Value="restaurant.FoodId" class="form-control">
+                <InputSelect @bind-Value="restaurant.MenuId" class="form-control">
                     <option value="">-- Select Menu --</option>
-                    @if (Foods != null)
+                    @if (Menus != null)
                     {
-                        foreach (var food in Foods)
+                        foreach (var menu in Menus)
                         {
-                            <option value="@food.Id">@food.Name</option>
+                            <option value="@menu.Id">@menu.Rest_Name</option>
                         }
                     }
                 </InputSelect>
-                <ValidationMessage For="@(()=> restaurant.FoodId)" />
+                <ValidationMessage For="@(()=> restaurant.MenuId)" />
             </div>
         </div>
 
@@ -117,7 +117,7 @@
     private IList<Table> Tables;
     private IList<Cuisine> Cuisines;
     private IList<PaymentType> PaymentTypes;
-    private IList<Food> Foods;
+    private IList<Menu> Menus;
     private IList<Image> Images;
 
     protected async override Task OnInitializedAsync()
@@ -125,7 +125,7 @@
         Tables = await _client.GetFromJsonAsync<List<Table>>($"{Endpoints.TablesEndpoint}");
         Cuisines = await _client.GetFromJsonAsync<List<Cuisine>>($"{Endpoints.CuisinesEndpoint}");
         PaymentTypes = await _client.GetFromJsonAsync<List<PaymentType>>($"{Endpoints.PaymentTypesEndpoint}");
-        Foods = await _client.GetFromJsonAsync<List<Food>>($"{Endpoints.FoodsEndpoint}");
+        Menus = await _client.GetFromJsonAsync<List<Menu>>($"{Endpoints.MenusEndpoint}");
         Images = await _client.GetFromJsonAsync<List<Image>>($"{Endpoints.ImagesEndpoint}");
     }
 }
