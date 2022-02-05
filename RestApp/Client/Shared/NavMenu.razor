@@ -1,4 +1,10 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+@inject NavigationManager Navigation
+@inject SignOutSessionStateManager SignOutManager
+
+<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">RestApp</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
@@ -17,8 +23,9 @@
                     </NavLink>
                 </li>
                 <li class="nav-item px-3">
-                    <NavLink class="nav-link" href="authentication/logout" Match="NavLinkMatch.All">
-                        <span class="oi oi-account-logout" aria-hidden="true"></span> Log out
+                    <NavLink class="nav-link" href="#" @onclick="BeginSignOut" Match="NavLinkMatch.All">
+                        <span class="oi oi-account-logout" aria-hidden="true"></span>
+                        Log out
                     </NavLink>
                 </li>
             </Authorized>
@@ -71,13 +78,13 @@
                     <li class="nav-item px-1">
                         <NavLink class="nav-link" href="customers">
                             <span class="oi oi-plus" aria-hidden="true"></span> customers
-                    </NavLink>
+                        </NavLink>
                     </li>
                     <li class="nav-item px-1">
                         <NavLink class="nav-link" href="bookings">
                             <span class="oi oi-plus" aria-hidden="true"></span> bookings
                         </NavLink>
-                    </li>                    
+                    </li>
                     <li class="nav-item px-1">
                         <NavLink class="nav-link" href="images">
                             <span class="oi oi-plus" aria-hidden="true"></span> images
@@ -105,5 +112,11 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private async Task BeginSignOut(MouseEventArgs args)
+    {
+        await SignOutManager.SetSignOutState();
+        Navigation.NavigateTo("authentication/logout");
     }
 }

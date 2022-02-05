@@ -47,8 +47,7 @@
         <div class="form-group">
             <label>Restaurant: </label>
             <div>
-                <InputSelect @bind-Value="booking.RestaurantId" class="form-control">
-                    <option value="">-- Select Restaurant --</option>
+                <InputSelect @bind-Value="booking.RestaurantId" disabled=@true class="form-control">
                     @if (Restaurants != null)
                     {
                         foreach (var restaurant in Restaurants)

@@ -1,6 +1,8 @@
 ﻿@page "/tables/"
 @inject HttpClient _client
 @inject IJSRuntime js
+@inject HttpInterceptorService _interceptor
+@implements IDisposable
 @attribute [Authorize]
 
 
@@ -52,6 +54,7 @@ else
     private List<Table> Tables;
     protected async override Task OnInitializedAsync()
     {
+        _interceptor.MonitorEvent();
         Tables = await _client.GetFromJsonAsync<List<Table>>($"{Endpoints.TablesEndpoint}");
     }
     async Task Delete(int tableId)
@@ -63,5 +66,9 @@ else
             await _client.DeleteAsync($"{Endpoints.TablesEndpoint}/{tableId}");
             await OnInitializedAsync();
         }
+    }
+    public void Dispose() 
+    {
+        _interceptor.DisposeEvent();
     }
 }
