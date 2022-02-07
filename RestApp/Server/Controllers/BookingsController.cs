@@ -25,7 +25,7 @@ namespace RestApp.Server.Controllers
             return Ok(Bookings);
         }
 
-        // GET: api/Restaurants/5
+        // GET: api/Bookings/5
         [HttpGet("{id}")]
         public async Task<ActionResult> GetBooking(int id)
         {
@@ -73,7 +73,7 @@ namespace RestApp.Server.Controllers
         // POST: api/Bookings
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Booking>> PostRestaurant(Booking Booking)
+        public async Task<ActionResult<Booking>> PostBooking(Booking Booking)
         {
             await _unitOfWork.Bookings.Insert(Booking);
             await _unitOfWork.Save(HttpContext);

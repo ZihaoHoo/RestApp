@@ -33,7 +33,6 @@ namespace RestApp.Shared.Domain
         public int ImageId { get; set; }
         public virtual Image Image { get; set; }
         public string Reviews { get; set; }
-        //public int TableId { get; set; }
-        //public virtual Table Table { get; set; }
+        public virtual List<Booking> Bookings { get; set; }
     }
 }
