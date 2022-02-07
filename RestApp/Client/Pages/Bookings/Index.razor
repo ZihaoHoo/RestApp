@@ -41,7 +41,7 @@ else
                     <td>@booking.Customer.FirstName @booking.Customer.LastName</td>
                     <td>@booking.Pax</td>
                     <td>@booking.Restaurant.Name</td>
-                    <td>@booking.BkDate.Value.ToString("dd mm yyyy")</td>
+                    <td>@booking.BkDate.Value.ToShortDateString()</td>
                     <td>@booking.BkTime.Value.ToShortTimeString()</td>
                     <td>@booking.Request</td>
                     <td>
