@@ -15,7 +15,7 @@ namespace RestApp.Shared.Domain
         [Required]
         public int? Pax { get; set; }
         [Required]
-        public int RestaurantId { get; set; }
+        public int? RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
         [Required]
         public int? CustomerId { get; set; }
