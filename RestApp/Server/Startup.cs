@@ -10,7 +10,9 @@ using RestApp.Server.Data;
 using RestApp.Server.IRepository;
 using RestApp.Server.Models;
 using RestApp.Server.Repository;
-
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.Linq;
 
 namespace RestApp.Server
 {
@@ -33,7 +35,7 @@ namespace RestApp.Server
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            services.AddDefaultIdentity<ApplicationUser>(options =>options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -43,9 +45,11 @@ namespace RestApp.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+
             services.AddControllersWithViews().AddNewtonsoftJson(op => op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddRazorPages();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            
 
         }
 

@@ -8,7 +8,6 @@ namespace RestApp.Shared.Domain
         public string LastName { get; set; }
         public string ContactNumber { get; set; }
         public string EmailAddress { get; set; }
-        public string Request { get; set; }
 
     }
 }

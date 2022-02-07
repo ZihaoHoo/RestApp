@@ -5,6 +5,10 @@ using Microsoft.Extensions.Options;
 using RestApp.Server.Configurations.Entities;
 using RestApp.Server.Models;
 using RestApp.Shared.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RestApp.Server.Data
 {
@@ -23,7 +27,7 @@ namespace RestApp.Server.Data
         public DbSet<PaymentType> PaymentTypes { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Table> Tables { get; set; }
-
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -37,7 +41,9 @@ namespace RestApp.Server.Data
 
             builder.ApplyConfiguration(new TableSeedConfiguration());
 
-
+            builder.ApplyConfiguration(new RoleSeedConfiguration());
+            builder.ApplyConfiguration(new UserSeedConfiguration());
+            builder.ApplyConfiguration(new UserRoleSeedConfiguration());
 
 
 

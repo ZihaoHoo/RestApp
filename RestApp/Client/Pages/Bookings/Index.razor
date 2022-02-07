@@ -29,6 +29,7 @@ else
                 <th>Restaurant</th>
                 <th>Reservation Date</th>
                 <th>Reservation Time</th>
+                <th>Request</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -42,6 +43,7 @@ else
                     <td>@booking.Restaurant.Name</td>
                     <td>@booking.BkDate.Value.ToString("dd mm yyyy")</td>
                     <td>@booking.BkTime.Value.ToShortTimeString()</td>
+                    <td>@booking.Request</td>
                     <td>
                         <a href="/bookings/view/@booking.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

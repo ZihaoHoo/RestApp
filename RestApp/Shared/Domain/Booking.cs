@@ -20,6 +20,7 @@ namespace RestApp.Shared.Domain
         [Required]
         public int? CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
+        public String Request { get; set; }
 
     }
 }

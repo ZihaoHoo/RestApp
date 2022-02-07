@@ -12,5 +12,6 @@
         public static readonly string PaymentTypesEndpoint = $"{Prefix}/paymentTypes";
         public static readonly string RestaurantsEndpoint = $"{Prefix}/restaurants";
         public static readonly string TablesEndpoint = $"{Prefix}/tables";
+        public static readonly string AccountsEndpoint = $"{Prefix}/accounts";
     }
 }

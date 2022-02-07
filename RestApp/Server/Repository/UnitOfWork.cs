@@ -7,6 +7,7 @@ using RestApp.Server.Models;
 using RestApp.Shared.Domain;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RestApp.Server.Repository
@@ -26,7 +27,7 @@ namespace RestApp.Server.Repository
 
         private UserManager<ApplicationUser> _userManager;
 
-        public UnitOfWork(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public UnitOfWork(ApplicationDbContext context,UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;

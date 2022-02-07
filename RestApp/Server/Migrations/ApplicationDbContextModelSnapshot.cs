@@ -147,6 +147,22 @@ namespace RestApp.Server.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ad2bcf0c-20db-474f-8407-5a6b159518ba",
+                            ConcurrencyStamp = "bd91e6e5-4028-41aa-b843-26c3d684aef9",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "bd2bcf0c-20db-474f-8407-5a6b159518bb",
+                            ConcurrencyStamp = "540675e0-87ec-4d46-8b05-30e307b1522e",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -234,6 +250,13 @@ namespace RestApp.Server.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "3781efa7-66dc-47f0-860f-e506d04102e4",
+                            RoleId = "ad2bcf0c-20db-474f-8407-5a6b159518ba"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -326,6 +349,26 @@ namespace RestApp.Server.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "829b23ff-a3d9-4924-864d-74466a681d2a",
+                            Email = "admin@localhost.com",
+                            EmailConfirmed = false,
+                            FirstName = "Admin",
+                            LastName = "User",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@LOCALHOST.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBdPXfppcTYHMOtD0TJmwXZ1XEBwVUVc7BUz925aNsRc4EI0vqU7yNbdaJRCZbEWMw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "add76190-b959-418b-b29d-398bbf42affe",
+                            TwoFactorEnabled = false,
+                            UserName = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("RestApp.Shared.Domain.Booking", b =>
@@ -359,6 +402,9 @@ namespace RestApp.Server.Migrations
                     b.Property<int?>("Pax")
                         .IsRequired()
                         .HasColumnType("int");
+
+                    b.Property<string>("Request")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("RestaurantId")
                         .IsRequired()
@@ -483,9 +529,6 @@ namespace RestApp.Server.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Request")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -499,12 +542,11 @@ namespace RestApp.Server.Migrations
                             Id = 1,
                             ContactNumber = "90896745",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 868, DateTimeKind.Local).AddTicks(8550),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 870, DateTimeKind.Local).AddTicks(6827),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 515, DateTimeKind.Local).AddTicks(9091),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 517, DateTimeKind.Local).AddTicks(4384),
                             EmailAddress = "Low@abc.com",
                             FirstName = "Low",
                             LastName = "Ying Yang",
-                            Request = "NIL",
                             UpdatedBy = "System"
                         },
                         new
@@ -512,12 +554,11 @@ namespace RestApp.Server.Migrations
                             Id = 2,
                             ContactNumber = "90893333",
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 870, DateTimeKind.Local).AddTicks(7842),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 870, DateTimeKind.Local).AddTicks(7847),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 517, DateTimeKind.Local).AddTicks(5232),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 517, DateTimeKind.Local).AddTicks(5237),
                             EmailAddress = "Xing@abc.com",
                             FirstName = "Ho",
                             LastName = "Rong Xing",
-                            Request = "No Seafood",
                             UpdatedBy = "System"
                         });
                 });
@@ -558,8 +599,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(4983),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(4988),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(3113),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(3118),
                             Img_url = "https://qul.imgix.net/c489aa2b-7abb-47c8-90c1-3138eda84fab/435795_sld.jpg?auto=format&w=230&h=156&fit=crop&ch=Viewport-Width%2CWidth%2CDPR",
                             Rest_Name = "OpenTable",
                             UpdatedBy = "System"
@@ -568,8 +609,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(4992),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(4993),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(3122),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(3123),
                             Img_url = "https://qul.imgix.net/efd3bffe-ac27-4dfe-9900-24047f0f105c/383932_sld.jpg?auto=format&w=230&h=156&fit=crop&ch=Viewport-Width%2CWidth%2CDPR",
                             Rest_Name = "CloseTable",
                             UpdatedBy = "System"
@@ -578,8 +619,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(4994),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(4995),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(3124),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(3125),
                             Img_url = "https://qul.imgix.net/48628ed8-c092-4194-a91f-335e9e5170d9/101253_landscape.jpg?auto=format&ch=Viewport-Width%2CWidth%2CDPR",
                             Rest_Name = "FrenchTable",
                             UpdatedBy = "System"
@@ -622,8 +663,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(1307),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(1313),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 517, DateTimeKind.Local).AddTicks(8760),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 517, DateTimeKind.Local).AddTicks(8765),
                             Path_url = "pdf/Italian Vecchio Menu.pdf",
                             Rest_Name = "Italian Vecchio",
                             UpdatedBy = "System"
@@ -632,8 +673,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(1316),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(1318),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 517, DateTimeKind.Local).AddTicks(8769),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 517, DateTimeKind.Local).AddTicks(8770),
                             Path_url = "pdf/American Diner.pdf",
                             Rest_Name = "American Diner",
                             UpdatedBy = "System"
@@ -672,8 +713,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9268),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9274),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6780),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6785),
                             Type = "Visa",
                             UpdatedBy = "System"
                         },
@@ -681,8 +722,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9277),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9278),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6788),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6788),
                             Type = "Mastercard",
                             UpdatedBy = "System"
                         },
@@ -690,8 +731,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9280),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9281),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6790),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6791),
                             Type = "Amex",
                             UpdatedBy = "System"
                         },
@@ -699,8 +740,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9282),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9283),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6792),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6792),
                             Type = "UnionPay",
                             UpdatedBy = "System"
                         },
@@ -708,8 +749,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 5,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9285),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9286),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6793),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6794),
                             Type = "NETS",
                             UpdatedBy = "System"
                         },
@@ -717,8 +758,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 6,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9287),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 871, DateTimeKind.Local).AddTicks(9288),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6795),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 518, DateTimeKind.Local).AddTicks(6796),
                             Type = "QR pay",
                             UpdatedBy = "System"
                         });
@@ -829,8 +870,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 872, DateTimeKind.Local).AddTicks(3235),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 872, DateTimeKind.Local).AddTicks(3241),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 519, DateTimeKind.Local).AddTicks(2),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 519, DateTimeKind.Local).AddTicks(6),
                             Pax = 1,
                             TType = "1 person table",
                             UpdatedBy = "System"
@@ -839,8 +880,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 872, DateTimeKind.Local).AddTicks(3245),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 872, DateTimeKind.Local).AddTicks(3246),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 519, DateTimeKind.Local).AddTicks(9),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 519, DateTimeKind.Local).AddTicks(10),
                             Pax = 2,
                             TType = "2 person table",
                             UpdatedBy = "System"
@@ -849,8 +890,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 872, DateTimeKind.Local).AddTicks(3248),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 872, DateTimeKind.Local).AddTicks(3249),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 519, DateTimeKind.Local).AddTicks(11),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 519, DateTimeKind.Local).AddTicks(12),
                             Pax = 3,
                             TType = "3 person table",
                             UpdatedBy = "System"
@@ -859,8 +900,8 @@ namespace RestApp.Server.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2022, 2, 7, 8, 27, 37, 872, DateTimeKind.Local).AddTicks(3250),
-                            DateUpdated = new DateTime(2022, 2, 7, 8, 27, 37, 872, DateTimeKind.Local).AddTicks(3251),
+                            DateCreated = new DateTime(2022, 2, 7, 13, 54, 28, 519, DateTimeKind.Local).AddTicks(13),
+                            DateUpdated = new DateTime(2022, 2, 7, 13, 54, 28, 519, DateTimeKind.Local).AddTicks(14),
                             Pax = 4,
                             TType = "4 person table",
                             UpdatedBy = "System"

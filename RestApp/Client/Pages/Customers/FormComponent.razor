@@ -27,10 +27,10 @@
         </div>
 
         <div class="form-group">
-            <label>Request: </label>
+            <label>Phone Number: </label>
             <div>
-                <InputTextArea @bind-Value="customer.Request" class="form-control" />
-                <ValidationMessage For="@(()=> customer.Request)" />
+                <InputText @bind-Value="customer.ContactNumber" class="form-control" />
+                <ValidationMessage For="@(()=> customer.ContactNumber)" />
             </div>
         </div>
     </fieldset>

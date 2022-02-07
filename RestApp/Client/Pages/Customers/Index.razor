@@ -5,18 +5,18 @@
 
 
 
-<h3 class="card-title">Tables</h3>
+<h3 class="card-title">Customers</h3>
 <br />
 <a href="/customers/create" class="btn btn-secondary">
     <span class="oi oi-plus"></span>
-    Create New Payment Types
+    Create New Customer
 </a>
 <br />
 <br />
 
 @if (Customers == null)
 {
-<div class="alert alert-info">Loading PaymentTypes ...</div>
+<div class="alert alert-info">Loading Customers ...</div>
 }
 else
 {
@@ -26,7 +26,6 @@ else
                 <th>Name</th>
                 <th>Contact Number</th>
                 <th>Email Address</th>
-                <th>Request</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,7 +36,6 @@ else
                     <td>@customer.FirstName @customer.LastName</td>
                     <td>@customer.ContactNumber</td>
                     <td>@customer.EmailAddress</td>
-                    <td>@customer.Request</td>
                     <td>
                         <a href="/customers/view/@customer.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>

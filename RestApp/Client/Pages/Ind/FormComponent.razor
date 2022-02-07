@@ -25,7 +25,8 @@
             <label>reservation Date: </label>
             <div>
                 <InputDate @bind-Value="booking.BkDate" class="form-control">
-                    @if(booking.BkDate==null){
+                    @if (booking.BkDate == null)
+                    {
                         booking.BkDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
                     }
                 </InputDate>
@@ -36,8 +37,9 @@
         <div class="form-group">
             <label>reservation Time: </label>
             <div>
-                <SfTimePicker TValue="DateTime?" @bind-Value='@booking.BkTime' StrictMode=true Min='@MinVal' Max='@MaxVal'  ShowClearButton="true">
-                    @if (booking.BkTime == null) {
+                <SfTimePicker TValue="DateTime?" @bind-Value='@booking.BkTime' StrictMode=true Min='@MinVal' Max='@MaxVal' ShowClearButton="true">
+                    @if (booking.BkTime == null)
+                    {
                         booking.BkDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, 0, 0);
                     }
                 </SfTimePicker>
@@ -48,6 +50,7 @@
             <label>Restaurant: </label>
             <div>
                 <InputSelect @bind-Value="booking.RestaurantId" class="form-control">
+                    <option value="">-- Select Restaurant --</option>
                     @if (Restaurants != null)
                     {
                         foreach (var restaurant in Restaurants)
@@ -65,6 +68,14 @@
             <div>
                 <InputNumber @bind-Value="booking.Pax" class="form-control" />
                 <ValidationMessage For="@(()=> booking.Pax)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Request: </label>
+            <div>
+                <InputTextArea @bind-Value="booking.Request" class="form-control" />
+                <ValidationMessage For="@(()=> booking.Request)" />
             </div>
         </div>
     </fieldset>
